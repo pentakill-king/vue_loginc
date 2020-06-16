@@ -3,7 +3,7 @@
     <div><img src="@/assets/logo.png" alt=""></div>
     <div class="lp">
       <!-- 号码输入框 -->
-    <inputc type="tel" placeholder="手机号" btnt="获取验证码" error="号码错误" />
+    <inputc type="tel" placeholder="手机号" btnt="获取验证码" error="号码错误" @btnclick="btnclick"/>
      <!-- 验证码输入框 -->
     <inputc type="text" placeholder="验证码"  error="验证码错误" />
      <!-- 登陆框 -->
