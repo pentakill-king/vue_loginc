@@ -3,9 +3,9 @@
     <div><img src="@/assets/logo.png" alt=""></div>
     <div class="lp">
       <!-- 号码输入框 -->
-    <inputc type="tel" placeholder="手机号" btnt="获取验证码" error="号码错误" @btnclick="btnclick"/>
+    <inputc type="tel" v-model="phone" placeholder="手机号" :btnt="btnt" :disabled="disabled" :error="error.phone" @btnclick="btnclick1"/>
      <!-- 验证码输入框 -->
-    <inputc type="text" placeholder="验证码"  error="验证码错误" />
+    <inputc type="text" placeholder="验证码"  :error="error.code" />
      <!-- 登陆框 -->
    
     </div>
@@ -20,6 +20,15 @@
 import inputc from '@/components/inputc.vue';
 export default {
 
+  data(){
+    return{
+      phone:"",
+      btnt:"获取验证码",
+      error:{},
+      disabled:false
+    }
+  },
+
   components: {
     inputc
   }
@@ -29,28 +38,62 @@ export default {
     input(){
 
     },
+    // 手机号
+    vphone(){
+      if (!(/^1[34578]\d{9}$/.test(this.phone))){
+        this.error.phone="号码错误"
+        return false
+      }
+      else  {
+        return true
+      }
+      
+    },
     // 验证码
-    btnclick(){
-      let time=60
+    code(){
+      if (!(/[123456789]\d{6}$/.test(this.phone))){
+        this.error.code="验证码错误"
+        return false
+      }
+      else  {
+        return true
+      }
+      
+    },
+    
+    btnclick1(){
+      
+      if (this.vphone()){
+        // 发送验证码请求
+
+
+        // 验证码倒计时
+      
+      let time=59
       let timer=setInterval(()=>{
         if (time==0){
           clearInterval(timer)
           this.btnt="获取验证码"
           this.disabled= false
+
         }
         else{
           this.btnt=time+"秒重试"
           this.disabled=true
           time--
+          
         }
       },1000)
-      console.log(time);
+
+      }
       
 
     },
     // 登陆
     login(){
-
+if (this.code()){
+  // 发送登陆请求
+}
     }
   }
 }

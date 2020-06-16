@@ -4,7 +4,7 @@
     <!-- 输入框 类型 值 提示 名字 方法-->
     <input  :type="type"  :value="value" :placeholder="placeholder" :name="name" @input="$emit('input',$event.target.value)" >
     <!-- 内按钮 隐藏 变灰 事件-->
-    <button v-if="btnt" :disabled="disabled" @click="$emit('btnclick')" >{{btnt}}</button>
+    <button v-if="btnt" :disabled="disabled"  @click="$emit('btnclick')" >{{btnt}}</button>
     
     
 </div>
