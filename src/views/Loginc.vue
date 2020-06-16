@@ -1,7 +1,7 @@
 <template>
   <div class="loginc">
     <div><img
-        src="@/assets/logo.png"
+        src="@/assets/logo.jpeg"
         alt=""
       ></div>
     <div class="lp">
@@ -22,7 +22,6 @@
         placeholder="验证码"
         :error="error.code"
       />
-      <!-- 登陆框 -->
 
     </div>
     <!-- 登陆按钮 -->
@@ -123,6 +122,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+img{
+  width: 100px;
+  border-radius: 25%;
+}
 .loginc {
   display: flex;
   flex-direction: column;
