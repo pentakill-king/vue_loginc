@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="ipt"
+      class="ipt radius5"
       :class="{'is-err':error}"
     >
       <!-- 输入框 类型 值 提示 名字 方法-->
@@ -13,7 +13,7 @@
         @input="$emit('input',$event.target.value)"
       >
       <!-- 内按钮 隐藏 变灰 事件-->
-      <button
+      <button class="radius5"
         v-if="btnt"
         :disabled="disabled"
         @click="$emit('btnclick')"
@@ -43,11 +43,13 @@ export default {
 </script>
 
  <style lang="less" scoped>
+ 
 .ipt {
   display: flex;
   width: 300px;
   height: 30px;
   border: 1px solid gray;
+  margin: 1vh auto;
 
   input {
     border: none;
@@ -56,8 +58,10 @@ export default {
   }
   button {
     width: 110px;
-    background-color: royalblue;
+    background-color: rgb(3, 109, 209);
     border: none;
+    height: 100%;
+    color: white;
   }
 }
 

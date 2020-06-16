@@ -13,7 +13,7 @@
         :btnt="btnt"
         :disabled="disabled"
         :error="error.phone"
-        @btnclick="btnclick1"
+        @btnclick="btnclick"
       />
       <!-- 验证码输入框 -->
       <inputc
@@ -27,6 +27,7 @@
     </div>
     <!-- 登陆按钮 -->
     <div><button
+        class="radius5"
         :disabled="disabledl"
         @click="login"
       >{{logint}}</button></div>
@@ -61,7 +62,7 @@ export default {
         this.$set(this.error, "phone", "号码错误");
         return false;
       } else {
-        this.$set(this.error, "");
+        this.error={}
         return true;
       }
     },
@@ -71,12 +72,12 @@ export default {
         this.$set(this.error, "code", "验证码错误");
         return false;
       } else {
-        this.$set(this.error, "");
+        this.error={}
         return true;
       }
     },
 
-    btnclick1() {
+    btnclick() {
       if (this.vphone()) {
         // 发送验证码请求
 
@@ -131,8 +132,9 @@ export default {
     width: 300px;
     height: 30px;
     background-color: yellowgreen;
-    border: 1px solid steelblue;
     font-size: 16px;
+    border: 1px solid yellowgreen;
+    color: white ;
   }
 }
 </style>
