@@ -3,9 +3,9 @@
     <div><img src="@/assets/logo.png" alt=""></div>
     <div class="lp">
       <!-- 号码输入框 -->
-    <inputc type="tel" v-model="phone" placeholder="手机号" :btnt="btnt" :disabled="disabled" :error="error.phone" @btnclick="btnclick1"/>
+    <inputc type="tel" v-model="phone" placeholder="手机号"  :btnt="btnt" :disabled="disabled" :error="error.phone" @btnclick="btnclick1"/>
      <!-- 验证码输入框 -->
-    <inputc type="text" placeholder="验证码"  :error="error.code" />
+    <inputc type="text" v-model="code" placeholder="验证码" :error="error.code" />
      <!-- 登陆框 -->
    
     </div>
@@ -22,6 +22,7 @@ export default {
 
   data(){
     return{
+      code:"",
       phone:"",
       btnt:"获取验证码",
       error:{},
@@ -45,17 +46,19 @@ export default {
         return false
       }
       else  {
+        this.error={}
         return true
       }
       
     },
     // 验证码
-    code(){
-      if (!(/[123456789]\d{6}$/.test(this.phone))){
+    changecode(){
+      if (!(/^\d{6}$/.test(this.phone))){
         this.error.code="验证码错误"
         return false
       }
       else  {
+        this.error={}
         return true
       }
       
@@ -91,7 +94,13 @@ export default {
     },
     // 登陆
     login(){
-if (this.code()){
+if (this.changecode()){
+  
+  
+  console.log(this.error);
+  console.log(this.phone+"+"+this.code);
+  
+  
   // 发送登陆请求
 }
     }
